@@ -27,19 +27,8 @@ const images = [
 
 const gallery = document.querySelector('.gallery');
 
-const createGallery = images => {
-  const galleryItems = images.slice(0, 3).map(image => {
-    const li = document.createElement('li');
-    const img = document.createElement('img');
-    img.src = image.url;
-    img.alt = image.alt;
-    li.appendChild(img);
-    return li;
-  });
+const galleryItems = images
+  .map(image => `<li><img src="${image.url}" alt="${image.alt}"></li>`)
+  .join('');
 
-  galleryItems.forEach(item => {
-    gallery.appendChild(item);
-  });
-};
-
-createGallery(images);
+gallery.insertAdjacentHTML('beforeend', galleryItems);
